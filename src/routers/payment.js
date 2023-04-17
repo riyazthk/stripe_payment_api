@@ -28,7 +28,12 @@ router.post("/create_payment", async (req, res) => {
       amount: 1324234,
       currency: "usd",
       description: "qweqwe",
+      customer: customer.id,
       payment_method_types: ["card"],
+      setup_future_usage: "off_session",
+      automatic_payment_methods: {
+        enabled: true,
+      },
       statement_descriptor: "qweqweqw",
     });
     const response_payload = {
