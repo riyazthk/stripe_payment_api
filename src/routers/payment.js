@@ -11,6 +11,8 @@ router.post("/create_payment", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 1324234,
       currency: "usd",
+      description: "qweqwe",
+      statement_descriptor: "qweqweqw",
     });
 
     const clientSecret = paymentIntent.id;
