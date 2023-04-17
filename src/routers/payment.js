@@ -5,6 +5,7 @@ const stripe = require("stripe")(
 );
 
 router.post("/create_payment", async (req, res) => {
+  console.log("api hit");
   //   const payment = new User(req.body);
   try {
     const paymentIntent = await stripe.paymentIntents.create({
