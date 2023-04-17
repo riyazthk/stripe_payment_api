@@ -9,26 +9,26 @@ router.post("/create_payment", async (req, res) => {
   //   const payment = new User(req.body);
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 1324,
+      amount: 1324234,
       currency: "usd",
     });
 
     const clientSecret = paymentIntent.id;
     if (paymentIntent.id) {
-      //   try {
-      //     const confirmPayment = await stripe.paymentIntents.confirm(
-      //       paymentIntent.id,
-      //       { payment_method: "Card" }
-      //     );
-      //     console.log("paymentIntent", confirmPayment);
-      //   } catch (e) {
-      //     console.log("paymentIntent", e);
-      //   }
+      try {
+        const confirmPayment = await stripe.paymentIntents.confirm(
+          paymentIntent.id,
+          { payment_method: "Card" }
+        );
+        console.log("paymentIntent", confirmPayment);
+      } catch (e) {
+        console.log("paymentIntent", e);
+      }
 
       res.send({
         status: 200,
         message: "payment client secret key successfully created",
-        data: clientSecret,
+        data: "Success",
       });
     }
   } catch (e) {
