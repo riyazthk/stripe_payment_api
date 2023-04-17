@@ -23,6 +23,14 @@ router.post("/create_payment", async (req, res) => {
     //   ephemeralKey: ephemeralKey.secret,
     //   customer: customer.id,
     // });
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: 1324234,
+      currency: "usd",
+      description: "qweqwe",
+      payment_method_types: ["card"],
+      statement_descriptor: "qweqweqw",
+    });
     const response_payload = {
       setupIntent: setupIntent.client_secret,
       ephemeralKey: ephemeralKey.secret,
