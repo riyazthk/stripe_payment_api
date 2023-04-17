@@ -11,17 +11,11 @@ router.post("/create_payment", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 1324234,
       currency: "usd",
-      //   card: {
-      //   number: "4242424242424242",
-      //   expMonth: 12,
-      //   expYear: 2023,
-      //   cvc: "123",
-      //   },
       description: "qweqwe",
       statement_descriptor: "qweqweqw",
     });
 
-    const clientSecret = paymentIntent.id;
+    const clientSecret = paymentIntent;
     if (paymentIntent.id) {
       //   try {
       //     const confirmPayment = await stripe.paymentIntents.confirm(
